@@ -1,0 +1,62 @@
+﻿<Window x:Class="TrabajoFinalAlejandroAceves.WindowSecundaria"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrabajoFinalAlejandroAceves"
+        mc:Ignorable="d"
+        Title="Ventana Tablas" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu Margin="0 0 0 20">
+            <MenuItem Header=" _Creacion/Importacion" >
+                <MenuItem Header="Añadir Manual" Name="menuAnnadir" Click="MenuAnnadirProceso_Click"/>
+                <MenuItem Name="importarProcesos" Header="Importar Proceso" Click="MenuImportarProceso_Click"></MenuItem>
+                <Separator/>
+            </MenuItem>
+            <MenuItem Header=" _Modificar Procesos" Name="modProcesos" IsEnabled="False">
+                <MenuItem Name="modProceso" Header="Modificar Proceso" Click="MenuModProceso_Click" IsEnabled="False"/>
+                <Separator/>
+                <MenuItem Name="eliProceso"  Header="Borrar Proceso" Click="MenuBorrarProceso_Click" IsEnabled="False"/>
+            </MenuItem>
+        </Menu>
+
+        <ListView Name="TablaProcesos" Margin="20 5 20 15" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="2" SelectionChanged="Procesos_SelectionChanged">
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="Eleccion" DisplayMemberBinding="{Binding Eleccion}"/>
+                    <GridViewColumn Width="Auto" Header="Fecha" DisplayMemberBinding="{Binding FechaElecciones, StringFormat='dd/MM/yyyy'}"/>
+                    <GridViewColumn Width="Auto" Header="Numero Diputados" DisplayMemberBinding="{Binding NumEscannos}"/>
+                    <GridViewColumn Width="Auto" Header="Mayoria Absoluta" DisplayMemberBinding="{Binding NumMayoria}" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <ListView Name="TablaProceso" Margin="15 10" Grid.Row="2" Background="LightGray" Grid.Column="1" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="70pt" Header="Partido" DisplayMemberBinding="{Binding NombrePartido}"/>
+                    <GridViewColumn Width="100pt" Header="Numero Escaños" DisplayMemberBinding="{Binding Num}"/>
+                    <GridViewColumn Width="30pt" Header="Color">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Rectangle Width="10pt" Height="10pt">
+                                    <Rectangle.Fill>
+                                        <SolidColorBrush Color="{Binding Color}"></SolidColorBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
+
+<!--https://www.c-sharpcorner.com/UploadFile/mahesh/gridview-in-wpf/-->

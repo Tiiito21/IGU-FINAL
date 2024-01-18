@@ -1,0 +1,54 @@
+﻿<Window x:Class="TrabajoFinalAlejandroAceves.PartidoMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrabajoFinalAlejandroAceves"
+        mc:Ignorable="d"
+        Title="PartidoMenu" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="PARTIDO" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"
+               VerticalAlignment="Center" FontSize="40" FontStyle="Oblique" FontWeight="Bold" />
+        
+        <Label Content="Nombre Partido" Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <TextBox x:Name="name" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+                 VerticalAlignment="Center" Background="LightBlue" FontSize="15" Width="225" Height="25" TextAlignment="Center"/>
+
+        <Label Content="Numero Representantes" Grid.Row="2" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <TextBox x:Name="numRep" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"
+                 VerticalAlignment="Center" Background="LightBlue" FontSize="15" Width="225" Height="25" TextAlignment="Center"/>
+
+        
+        <StackPanel Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Margin="10">
+            <Label Content="Color del Partido" Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <TextBlock Text="Rojo" />
+            <Slider Name="sliderRojo" Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged" Margin="30 0" />
+
+            <TextBlock Text="Verde" />
+            <Slider Name="sliderVerde" Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged" Margin="30 0"/>
+
+            <TextBlock Text="Azul" />
+            <Slider Name="sliderAzul" Minimum="0" Maximum="255" ValueChanged="slider_ValueChanged" Margin="30 0"/>
+
+            <Label Content="COLOR" HorizontalAlignment="Center"></Label>
+            <Rectangle Name="previewColor" Width="100" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="Black" />
+        </StackPanel>
+
+        <Button Grid.Row="4" Background="SkyBlue" FontSize="20" Foreground="Gray" Grid.Column="0" FontWeight="Medium" Click="Aceptar_Button_Click">ACEPTAR</Button>
+        <Button Grid.Row="4" Background="SkyBlue" FontSize="20" Foreground="Gray" Grid.Column="2" FontWeight="Medium" Click="Rechazar_Button_Click">RECHAZAR</Button>
+
+    </Grid>
+</Window>

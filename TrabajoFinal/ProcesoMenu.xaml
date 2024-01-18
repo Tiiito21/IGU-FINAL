@@ -1,0 +1,110 @@
+﻿<Window x:Class="TrabajoFinalAlejandroAceves.ProcesoMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrabajoFinalAlejandroAceves"
+        mc:Ignorable="d"
+        Title="ProcesoCambiar" Height="450" Width="800">
+    
+
+        <TabControl>
+            <TabItem Header="Proceso">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="PROCESO" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontSize="40" FontStyle="Oblique" FontWeight="Bold" />
+
+                <Label Content="Proceso" Grid.Row="1" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <TextBox Name="name" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+                         VerticalAlignment="Center" Background="LightBlue" FontSize="15" Width="225" Height="25" TextAlignment="Center"></TextBox>
+
+                <Label Content="Fecha" Grid.Row="2" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <DatePicker SelectedDateFormat="Short" Name="date" HorizontalAlignment="Center" Margin="20 10"
+                            VerticalAlignment="Center" FirstDayOfWeek="Monday" Grid.Row="2" Grid.Column="2" FontSize="15" Width="200"/>
+
+                <Label Content="Numero Diputados" Grid.Row="3" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <TextBox Name="numDip" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" TextChanged="NumDip_TextChanged"
+                         VerticalAlignment="Center" Background="LightBlue" FontSize="15" Width="225" Height="25" TextAlignment="Center"/>
+
+                <Label Content="Numero Mayoria Absoluta" Grid.Row="4" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <TextBox Name="numMayoria" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" IsReadOnly="True"
+                         VerticalAlignment="Center" Background="LightBlue" FontSize="15" Width="225" Height="25" TextAlignment="Center"/>
+
+                <Button Grid.Row="6" Background="SkyBlue" FontSize="20" Foreground="Gray" Grid.Column="0" FontWeight="Medium" Click="Aceptar_Button_Click">ACEPTAR</Button>
+                <Button Grid.Row="6" Background="SkyBlue" FontSize="20" Foreground="Gray" Grid.Column="2" FontWeight="Medium" Click="Rechazar_Button_Click">RECHAZAR</Button>
+            </Grid>
+            <TabItem.ToolTip>
+                <TextBlock>Permite modificar la informacion del proceso</TextBlock>
+            </TabItem.ToolTip>
+        </TabItem>
+
+        <TabItem Header="Partidos">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="PARTIDOS" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" FontSize="40" FontStyle="Oblique" FontWeight="Bold" />
+
+                <Button  BorderBrush="Black" Grid.Row="1" Grid.Column="1" Margin="40 20"
+                    BorderThickness="1.2" FontWeight="Medium" Foreground="DarkCyan" Background="MintCream" FontSize="20" Click="AddPartido_Click">Añadir Partido</Button>
+                <Button  BorderBrush="Black" Grid.Row="2" Grid.Column="1" Margin="40 20" Name="modificarPartido" IsEnabled="False"
+                            BorderThickness="1.2" FontWeight="Medium" Foreground="DarkCyan" Background="MintCream" FontSize="20" Click="ModPartido_Click">Modificar Partido</Button>
+                <Button  BorderBrush="Black" Grid.Row="3" Grid.Column="1" Margin="40 20" Name="eliminarPartido" IsEnabled="False"
+                            BorderThickness="1.2" FontWeight="Medium" Foreground="DarkCyan" Background="MintCream" FontSize="20" Click="BorrarPartido_Click">Eliminar Partido</Button>
+                <ListView Name="TablaPartidos"  Grid.Row="0" Grid.RowSpan="5" Grid.ColumnSpan="1" Background="AliceBlue" SelectionChanged="TablaPartidos_SelectionChanged" >
+
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="75" Header="Partido" DisplayMemberBinding="{Binding NombrePartido}"/>
+                            <GridViewColumn Width="150" Header="Numero Representantes" DisplayMemberBinding="{Binding Num}"/>
+                            <GridViewColumn Width="150" Header="Color">
+                                
+                                <!--Plantilla para que aparezca un rectangulo con el color-->
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Rectangle Height="20" Width="20">
+                                            <Rectangle.Fill>
+                                                <SolidColorBrush Color="{Binding Color}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+
+                </ListView>
+
+
+            </Grid>
+        <TabItem.ToolTip>
+                <TextBlock>Permite modificar la informacion de los partidos del proceso</TextBlock>
+        </TabItem.ToolTip>
+        </TabItem>
+        </TabControl>
+    
+</Window>
